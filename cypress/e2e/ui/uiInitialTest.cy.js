@@ -1,5 +1,7 @@
 import { cartLocators } from '../../support/locators/cartLocators';
-import { homeLocators } from '../../support/locators/homeLocators'
+import { homeLocators } from '../../support/locators/homeLocators';
+import { formLocators } from '../../support/locators/formLocators';
+import { checkoutCompleteLocators } from '../../support/locators/checkoutCompleteLocators';
 
 context('initial test', () => {
 
@@ -22,7 +24,7 @@ context('initial test', () => {
     cy.clickOnElement('clicking on Login button', `${homeLocators.loginButton}`)
 
     //comprando
-    cy.checkIfElementIsPresent('checking if product container exist',`${cartLocators.productContainer}`)
+    cy.checkIfElementIsPresent('checking if product container exist', `${cartLocators.productContainer}`)
     cy.assertText('asserting text from cart title', `${cartLocators.productHeaderTitle}`, 'Products')
     cy.checkIfElementIsPresent('checking if menu icon exist', `${cartLocators.menuIcon}`)
     cy.selectElement('Filtering price low to high', `${cartLocators.hilowFilter}`, 'hilo')
@@ -34,32 +36,31 @@ context('initial test', () => {
     cy.clickOnElement('clicking on cart container', `${cartLocators.cartIconContainer}`)
 
     //verificando items no carrinho
-    cy.get('#react-burger-menu-btn').should('be.visible')
-    cy.get('.inventory_item_name').eq(0).should('be.visible');
-    cy.get('.inventory_item_name').eq(1).should('be.visible');
-    cy.get('.title').invoke('text').should('eq', 'Your Cart')
-    cy.get('.shopping_cart_badge').invoke('text').should('eq', '2')
+    cy.checkIfElementIsPresent('checking if menu icon exist', `${cartLocators.menuIcon}`)
+    cy.checkIfElementIsPresentIndex('checking if item added on the car exist', `${cartLocators.itemNames}`, 0)
+    cy.checkIfElementIsPresentIndex('checking if item added on the car exist', `${cartLocators.itemNames}`, 1)
+    cy.assertText('Asserting cart title text', `${cartLocators.cartTitle}`, 'Your Cart')
+    cy.assertText('Asserting badge value', `${cartLocators.cartBadgeIcon}`, '2')
+    cy.clickOnElement('clicking on checkout button', `${cartLocators.checkoutButton}`)
 
     //preenchendo dados
-    cy.get('#react-burger-menu-btn').should('be.visible')
-    cy.get('[data-test="checkout"]').should('be.visible').click()
-    cy.get('[data-test="firstName"]').type('Guilherme')
-    cy.get('[data-test="lastName"]').type('Jullyano')
-    cy.get('[data-test="postalCode"]').type('Brazil')
+    cy.checkIfElementIsPresent('checking if menu icon exist', `${cartLocators.menuIcon}`)
+    cy.typeOnElement('typing the username', `${formLocators.firstName}`, Cypress.env('nameOfUser'))
+    cy.typeOnElement('typing the username', `${formLocators.lastName}`, Cypress.env('lastNameOfUser'))
+    cy.typeOnElement('typing the username', `${formLocators.zipCode}`, Cypress.env('zipCodeOfUser'))
+    cy.checkIfElementIsPresent('checking if menu icon exist', `${formLocators.menuIcon}`)
+    cy.assertText('Asserting title text', `${formLocators.checkoutTitle}`, 'Checkout: Your Information')
+    cy.clickOnElement('clicking on continue button', `${formLocators.continueButton}`)
+    cy.checkIfTheSumOfTheItemsAreShownCorrectly('', `${formLocators.inventoryItemsPrice}`, `${formLocators.inventoryItemsPrice}`, `${formLocators.subtotalLabel}`, `${formLocators.taxesLabel}`, `${formLocators.totalLabel}`)
+    cy.clickOnElement('clicking on finish button', `${formLocators.finishButton}`)
 
     //finalizando pedido
-    cy.get('#react-burger-menu-btn').should('be.visible')
-    cy.get('.title').invoke('text').should('eq', 'Checkout: Your Information')
-    cy.get('[data-test="continue"]').should('be.visible').click()
-
-    cy.get('[data-test="finish"]').should('be.visible').click()
-
     //assert message
-    cy.get('#react-burger-menu-btn').should('be.visible')
-    cy.get('.title').invoke('text').should('eq', 'Checkout: Complete!')
-    cy.get('.complete-header').invoke('text').should('eq', 'THANK YOU FOR YOUR ORDER')
-    cy.get('.complete-text').invoke('text').should('eq', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!')
-    cy.get('.pony_express').should('be.visible')
+    cy.checkIfElementIsPresent('checking if menu icon exist', `${checkoutCompleteLocators.menuIcon}`)
+    cy.assertText('Asserting title text', `${checkoutCompleteLocators.checkoutTitle}`, 'Checkout: Complete!')
+    cy.assertText('Asserting title text', `${checkoutCompleteLocators.completeHeader}`, 'THANK YOU FOR YOUR ORDER')
+    cy.assertText('Asserting title text', `${checkoutCompleteLocators.completeText}`, 'Your order has been dispatched, and will arrive just as fast as the pony can get there!')
+    cy.checkIfElementIsPresent('checking if ponny logo exist', `${checkoutCompleteLocators.ponnyExpressLogo}`)
   })
 
 })

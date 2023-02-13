@@ -6,6 +6,9 @@ module.exports = defineConfig({
   },
   env: {
     loginCredential: "standard_user",
-    passwordCredential: "secret_sauce"
+    passwordCredential: "secret_sauce",
+    nameOfUser: "Guilherme",
+    lastNameOfUser: "Jullyano",
+    zipCodeOfUser: "Brazil"
   }
 });
