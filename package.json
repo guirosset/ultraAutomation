@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "apiAutomation": "node ./cypress/e2e/api/apiInitialTest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^12.5.1"
+    "cypress": "^12.5.1",
+    "newman": "^5.3.2"
   }
 }
