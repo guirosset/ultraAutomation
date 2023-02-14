@@ -7,8 +7,8 @@ module.exports = defineConfig({
   env: {
     loginCredential: "standard_user",
     passwordCredential: "secret_sauce",
-    nameOfUser: "Guilherme",
-    lastNameOfUser: "Jullyano",
+    nameOfUser: "Jane",
+    lastNameOfUser: "Doe",
     zipCodeOfUser: "Brazil"
   }
 });
