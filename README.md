@@ -6,7 +6,7 @@
 The purpose of this project is to run the full workflow for e-commerce purchases.
 * This project contains a regression test suite that validates inputs, buttons, matching values, etc.
 * This project is using [Cypress.io](https://www.cypress.io/) UI workflow automation.
-* This project is using CLI [Newman](https://github.com/postmanlabs/newman) library for API workflow automation
+* This project is using Postman CLI [Newman](https://github.com/postmanlabs/newman) library for API workflow automation
 * This project is also using [Node.js](https://nodejs.org/en/) to run [Newman](https://github.com/postmanlabs/newman)
 
 ### Getting all set!
