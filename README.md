@@ -16,6 +16,10 @@ Required actions for running the project
 * **Insttaling dependencies:** Open the terminal on project folder and run the `npm i` command
 * **Installing Cypress:** This project has cypress dependency listed on [package.json](./package.json) but if necessary check the official [Cypress Documentation](https://docs.cypress.io/guides/getting-started/installing-cypress)
 * **Installing Newman:** This project has Newman dependency listed on [package.json](./package.json) but if necessary check the official [Newman Documentation](https://support.postman.com/hc/en-us/articles/115003703325-How-to-install-Newman)
+* **Installing Postman:** This project doesn't require [Postman](https://www.postman.com/downloads/), but makes debbuging easier
+    * **Importing Postman collections:** To run this collection manually, import the [apiUltraAutomation.json](./cypress/support/collection/apiUltraAutomation.json) to Postman
+ 
+
 
 ## Understanding the structure
 
